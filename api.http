@@ -1,0 +1,119 @@
+GET http://127.0.0.1:8000/products/ HTTP/1.1
+
+###
+
+GET http://127.0.0.1:8000/products/2/ HTTP/1.1
+
+###
+
+DELETE http://127.0.0.1:8000/products/2/ HTTP/1.1
+
+###
+
+PUT http://127.0.0.1:8000/products/2/ HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM4MzIxNDExLCJpYXQiOjE3MzgzMjExMTEsImp0aSI6IjQ5NjU0N2VkOTUzNTRiNDFhM2QzMTMxZmFiOWY1OWY0IiwidXNlcl9pZCI6MX0.iKBU5RYX5V8IoyPAFcBvp_8S6dnfozeVQ0PuKYVST_w
+
+{
+    "name": "Shampoo 666",
+    "price": 23.0,
+    "type": "Consumption",
+    "sub_type": "hygiene",
+    "stock" : 10,
+    "description": "Shampoo 666 looks diabolic"
+}
+
+###
+
+POST http://127.0.0.1:8000/products/ HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM4MzIxNDExLCJpYXQiOjE3MzgzMjExMTEsImp0aSI6IjQ5NjU0N2VkOTUzNTRiNDFhM2QzMTMxZmFiOWY1OWY0IiwidXNlcl9pZCI6MX0.iKBU5RYX5V8IoyPAFcBvp_8S6dnfozeVQ0PuKYVST_w
+
+{
+    "name": "Max Factor 3333",
+    "price": 23.0,
+    "type": "Selective",
+    "sub_type": "make_up",
+    "stock" : 10,
+    "description": "Max Factor 3333 is a great product"
+}
+
+###
+
+POST http://127.0.0.1:8000/api/token/ HTTP/1.1
+Content-Type: application/json
+
+{
+    "username": "admin",
+    "password": "test"
+}
+
+
+###
+
+POST http://127.0.0.1:8000/api/token/refresh/ HTTP/1.1
+Content-Type: application/json
+
+{
+    "refresh": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTczODQwNjE5NiwiaWF0IjoxNzM4MzE5Nzk2LCJqdGkiOiI0MmE5NzE4ZWNmMjQ0ZjhmOTNiMDIyY2I2ZDAxOGVkYSIsInVzZXJfaWQiOjF9.YJl94bs7O7JbyKd0bl94aIgqwLAUs1cVJ2vFBkFnqaQ"
+}
+
+###
+
+GET http://127.0.0.1:8000/user-orders/ HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM4MTczMDc0LCJpYXQiOjE3MzgxNzI3NzQsImp0aSI6IjVlZTI4MzVmNmI5YjQ3ZWE5NWY0Y2JiNTliYTBhMTExIiwidXNlcl9pZCI6MX0.H5469DShFJ3baHE9IbECeCZpPmQbfXCU-su7TekUKW0
+
+
+###
+
+GET http://127.0.0.1:8000/orders/ HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM4NjAyMDY1LCJpYXQiOjE3Mzg2MDE3NjUsImp0aSI6IjgwNmVlNDk3MWYwMTRjZjJhYzc0NmM2YTlkNjUzMGI5IiwidXNlcl9pZCI6MX0.gXOxqYx9YSZo6NsX6TRT9-9THTjvwRrdTmmmgtyladw
+
+###
+
+GET http://127.0.0.1:8000/orders/e0690ef4-51a3-4a1f-ad14-00c1eb0833e6/ HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM4NjAyNDc0LCJpYXQiOjE3Mzg2MDIxNzQsImp0aSI6IjY0NjViMWRhNGE3YTQ5OTBiMWY4ODM2MmJiMTk1NGFiIiwidXNlcl9pZCI6MX0.0Ec7HUigUIvxPAjFn-STM6c5DFTL0FAvI_CaYPX7g44
+###
+
+POST  http://127.0.0.1:8000/orders/ HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM4NjAxNTIzLCJpYXQiOjE3Mzg2MDEyMjMsImp0aSI6IjAwNTlkODAwZjRiNDRhYzlhNzM4YTZiZDQzMjkxMTZjIiwidXNlcl9pZCI6MX0.jOTndRtYaTFC28TqqR85KLo7LbzTlulaBfyJ43-k6Ao
+
+{
+    "status": "Pending",
+    "items": [
+        {
+            "product": 2,
+            "quantity": 2
+        },
+        {
+            "product": 3,
+            "quantity": 1
+        }
+    ]
+}
+
+###
+
+PUT http://127.0.0.1:8000/orders/e0690ef4-51a3-4a1f-ad14-00c1eb0833e6/ HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM4NjAyNDc0LCJpYXQiOjE3Mzg2MDIxNzQsImp0aSI6IjY0NjViMWRhNGE3YTQ5OTBiMWY4ODM2MmJiMTk1NGFiIiwidXNlcl9pZCI6MX0.0Ec7HUigUIvxPAjFn-STM6c5DFTL0FAvI_CaYPX7g44
+
+{
+    "status": "Confirmed",
+    "items": [
+        {
+            "product": 2,
+            "quantity": 4
+        },
+        {
+            "product": 3,
+            "quantity": 2
+        }
+    ]
+}
+
+###
+
+GET http://127.0.0.1:8000/orders/e0690ef4-51a3-4a1f-ad14-00c1eb0833e6/ HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM4NjAzMzczLCJpYXQiOjE3Mzg2MDMwNzMsImp0aSI6ImIxNDAyNDU3MGNmNzRlOGZhZWExZjIwZTVmZWJhNjZkIiwidXNlcl9pZCI6MX0.Ir-z8nRMOGhtvNutmWScdzVvjKf1sipbKqcNwURzCaw
