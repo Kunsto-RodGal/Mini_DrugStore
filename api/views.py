@@ -8,7 +8,10 @@ from rest_framework.decorators import action
 from rest_framework.pagination import LimitOffsetPagination
 from rest_framework.permissions import AllowAny, IsAdminUser, IsAuthenticated
 from rest_framework.response import Response
+from rest_framework.throttling import ScopedRateThrottle
 from rest_framework.views import APIView
+
+from api.tasks import send_order_confirmation_email
 
 from .filters import InStockFilterBackend, OrderFilter, ProductFilter
 from .models import Order, Product, User
@@ -22,6 +25,8 @@ from .serializers import (
 
 
 class ProductListCreateAPIView(generics.ListCreateAPIView):
+    throttle_scope = 'products'
+    throttle_classes = [ScopedRateThrottle]
     queryset = Product.objects.order_by('pk')
     serializer_class = ProductSerializer
     filterset_class = ProductFilter
@@ -70,6 +75,7 @@ class ProductDetailAPIView(generics.RetrieveUpdateDestroyAPIView):
 
 
 class OrderViewSet(viewsets.ModelViewSet):
+    throttle_scope = 'orders'
     queryset = Order.objects.prefetch_related("items__product")
     serializer_class = OrderSerializer
     filterset_class = OrderFilter
@@ -82,7 +88,8 @@ class OrderViewSet(viewsets.ModelViewSet):
         return super().list(request, *args, **kwargs)
 
     def perform_create(self, serializer):
-        serializer.save(user=self.request.user)
+        order = serializer.save(user=self.request.user)
+        send_order_confirmation_email.delay(order.order_id, self.request.user.email)
 
     def get_serializer_class(self):
         if self.action == 'create' or self.action == 'update':
